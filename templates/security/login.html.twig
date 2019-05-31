@@ -18,7 +18,7 @@
             Conectez toi pour profiter des tout le functionalite du site.
             <span class="popup__text popup__text--error"></span>
           </p>
-          <form action="/blog" autocomplete="off" class="form form--login" method="post">
+          <form action="{{ path('security_login') }}" autocomplete="off" class="form form--login" method="post">
             <div class="form__line">
               <label for="username">Enter ton Username :
               </label>
@@ -37,6 +37,6 @@
         </div>
       </div>
     </div>
-    <script src="js/script.js"></script>
+
   </div>
 {% endblock %}
