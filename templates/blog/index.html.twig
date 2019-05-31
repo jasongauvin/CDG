@@ -40,9 +40,9 @@
             <header class="post__header">
               <div class="post__header__info">
                 <p class="vote__number visible-xs" id="voteCount">3</p>
-                <a href="/profil.html">
+                <a href="https://lamodeestchiant.netlify.com/profil.html">
                   <div class="post__header__image">
-                    <img alt="" src="https://lamodeestchiant.netlify.com/mec.992a6db1.png">
+                    <img alt="" src="https://lamodeestchiant.netlify.com/image.b76b0243.png">
                   </div>
                 </a>
                 <p class="post__header__author"></p>
@@ -51,8 +51,9 @@
                   {{ article.createdAt | date('H:i') }}</p>
               </div>
               <div class="post__header__edit">
-                <p>Edit</p>
-                <p>Delte</p>
+                <a href="blog/{{article.id}}/edit">
+                  <p>Edit</p>
+                </a>
               </div>
             </header>
             <div class="post__wrapper">
@@ -144,7 +145,6 @@
                     <a class="btn btn-primary" href="/connexion">Connexion</a>
                   {% endif %}
                 </div>
-                <!-- COMMENT END -->
               </div>
             </div>
           </div>
