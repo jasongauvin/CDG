@@ -25,13 +25,13 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
-
+    private $username;
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email()
      */
-    private $username;
+    private $email;
+
 
     /**
      * @ORM\Column(type="string", length=255)

@@ -1,145 +1,155 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }} !{% endblock %}
+{% block title %}Hello
+  {{ controller_name }}
+  !
+{% endblock %}
 
 {% block body %}
-    <div class="wrapper">
-        <section class="sidebar sidebar--post">
-            <div class="sidebar__filter">
-                <input type="text" placeholder="Search.." class="searchbar">
-                <button class="button">Travaille</button>
-                <button class="button">Famile</button>
-                <button class="button">Etat</button>
-                <button class="button">Animal</button>
-                <button class="button">Puplic Trafic</button>
-                <hr>
-                <button class="button">Plus nouvelles</button>
-                <button class="button">Hasard</button>
-                <button class="button">Plus populaires</button><br>
-                <hr>
-                <!-- <button class="button button--commit">Searche</button> -->
+  <div class="wrapper">
+    <section class="sidebar sidebar--post">
+      <div class="sidebar__filter">
+        <input class="searchbar" placeholder="Search.." type="text">
+        <button class="button">Travaille</button>
+        <button class="button">Famile</button>
+        <button class="button">Etat</button>
+        <button class="button">Animal</button>
+        <button class="button">Puplic Trafic</button>
+        <hr>
+        <button class="button">Plus nouvelles</button>
+        <button class="button">Hasard</button>
+        <button class="button">Plus populaires</button><br>
+        <hr>
+        <!-- <button class="button button--commit">Searche</button> -->
 
-            </div>
-            <a href="/login.html"><button class="button--circle button--profil"></button></a>
-        </section>
-        <section class="main">
-            <main>
-                {% for article in articles %}
-                <div class="post" id="post--{{ article.id }}">
-                    <header class="post__header">
-                        <div class="post__header__info">
-                            <p class="vote__number visible-xs">3</p>
-                            <a href="/profil.html">
-                                <div class="post__header__image">
-                                    <img src="https://lamodeestchiant.netlify.com/mec.992a6db1.png" alt="">
-                                </div>
-                            </a>
-                            <p class="post__header__author"></p>
-                            <p class="post__header__date">{{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</p>
-                        </div>
-                        <div class="post__header__edit">
-                            <p>Edit</p>
-                            <p>Delte</p>
-                        </div>
-                    </header>
-                    <div class="post__wrapper">
-                        <div class="post__vote vote">
-                            <p class="vote__number hidden-xs">3</p>
-                            <div class="vote__navigation">
-                                <button class="vote__navigation__arrow vote__navigation__arrow--up"></button>
-                                <button class="vote__navigation__arrow vote__navigation__arrow--down"></button>
-                            </div>
-                        </div>
-                        <div class="post__content">
-                            <p class="post__content__text">
-                                .... {{ article.content | raw }}
-                            </p>
-                            <figure class="post__content__image">
-                                <img src="{{ article.image }}" alt="">
-                            </figure>
-                            <div class="post__button--comment">
-                                <button class="post__button--commentButton"></button>
-                                <p class="post__button--commentCount">3</p>
-                            </div>
-
-                            <div class="post__button--vote">
-                                <div class="post__button--vote__box">
-                                    <button class="post__button--vote__arrow post__button--vote__arrow--up"></button>
-                                    <p class="post__button--commentCount post__button--commentCount--up">3</p>
-                                </div>
-                                <div class="post__button--vote__box post__button--vote__box--screen">
-                                    <a href="{{ path('blog_show', {'id': article.id}) }}">
-                                        <button class="post__button--vote__arrow post__button--vote__arrow--down"></button>
-                                        <p class="post__button--commentCount post__button--commentCount--down">3</p>
-                                        <div class="screem--hover">
-                                            <img src="https://lamodeestchiant.netlify.com/screenhover--red.b4bf448d.png" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- COMMENT START-->
-                            <div class="post__conntent__commentBox">
-                                <h1>{{ article.comments | length }} Commentaires : </h1>
-
-                                {% for comment in article.comments %}
-                                <div class="comment">
-                                    <header class="comment__header">
-                                        <a href="/profil.html">
-                                            <div class="comment__header__image">
-                                                <img src="https://lamodeestchiant.netlify.com/mec.992a6db1.png" alt="">
-                                            </div>
-                                        </a>
-                                        <p class="comment__header__author">{{ comment.author}}</p>
-                                    </header>
-                                    <main class="comment__content">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                                    </main>
-                                </div>
-                                {% endfor %}
-
-                                {% if app.user %}
-                                    {{ form_start(commentForm) }}
-
-                                    {{ form_row(commentForm.author, {'attr': {'placeholder': 'Votre nom'} }})}}
-
-                                    {{ form_row(commentForm.content,{'attr': {'placeholder': 'Votre commentaire'}})}}
-                                    <button type="submit" class="btn btn-success">Commenter</button>
-                                    {{ form_end(commentForm) }}
-
-                                {% else %}
-                                    <h2>Vous ne pouvez pas commenter sans etre identifié</h2>
-                                    <a href="{{ security_login }}" class="btn btn-primary">Connexion</a>
-                                {% endif %}
-
-                                <div class="comment comment--form">
-                                    <header class="comment__header">
-                                        <a href="/profil.html">
-                                            <div class="comment__header__image">
-                                                <img src="https://lamodeestchiant.netlify.com/mec.992a6db1.png" alt="">
-                                            </div>
-                                        </a>
-                                        <p class="comment__header__author">Ecrit un</p>
-                                    </header>
-                                    <main class="comment__content">
-                                        <form action="" method="get" class="form form--comment">
-                                            <div class="form__field">
-                            <textarea type="text" name="comment" id="name" required="">
-                          </textarea></div>
-                                            <div class="form__button">
-                                                <input type="submit" value="Ok">
-                                            </div>
-                                        </form>
-                                    </main>
-                                </div>
-
-                            </div>
-                            <!-- COMMENT END -->
-                        </div>
-                    </div>
+      </div>
+      <div class="sidebar--bottom">
+        {% if app.user %}
+          <a href="/login.html">
+            <button class="button--circle button--profil"></button>
+          </a>
+        {% else  %}
+          <a class="btn btn-primary" href="/connexion">Connexion</a>
+        {% endif %}
+      </div>
+    </section>
+    <section class="main">
+      <main>
+        {% for article in articles %}
+          <div class="post" id="post--{{ article.id }}">
+            <header class="post__header">
+              <div class="post__header__info">
+                <p class="vote__number visible-xs" id="voteCount">3</p>
+                <a href="/profil.html">
+                  <div class="post__header__image">
+                    <img alt="" src="https://lamodeestchiant.netlify.com/mec.992a6db1.png">
+                  </div>
+                </a>
+                <p class="post__header__author"></p>
+                <p class="post__header__date">{{ article.createdAt | date('d/m/Y') }}
+                  à
+                  {{ article.createdAt | date('H:i') }}</p>
+              </div>
+              <div class="post__header__edit">
+                <p>Edit</p>
+                <p>Delte</p>
+              </div>
+            </header>
+            <div class="post__wrapper">
+              <div class="post__vote vote">
+                <p class="vote__number hidden-xs" id="voteCount">3</p>
+                <div class="vote__navigation">
+                  <button class="vote__navigation__arrow vote__navigation__arrow--up"></button>
+                  <button class="vote__navigation__arrow vote__navigation__arrow--down"></button>
                 </div>
-                {% endfor %}
-            </main>
-        </section>
-    </div>
+              </div>
+              <div class="post__content">
+                <p class="post__content__text">
+                  ....
+                  {{ article.content | raw }}
+                </p>
+                <figure class="post__content__image">
+                  <img src="{{ article.image }}" alt="">
+                </figure>
+                <div class="post__button--comment">
+                  <button class="post__button--commentButton"></button>
+                  <p class="post__button--commentCount">{{ article.comments | length }}</p>
+                </div>
+
+                <div class="post__button--vote">
+                  <div class="post__button--vote__box">
+                    <button class="post__button--vote__arrow post__button--vote__arrow--up"></button>
+                    <p class="post__button--commentCount post__button--commentCount--up"></p>
+                  </div>
+                  <div class="post__button--vote__box post__button--vote__box--screen">
+                    <a href="{{ path('blog_show', {'id': article.id}) }}">
+                      <button class="post__button--vote__arrow post__button--vote__arrow--down"></button>
+                      <p class="post__button--commentCount post__button--commentCount--down">3</p>
+                      <div class="screem--hover">
+                        <img alt="" src="https://lamodeestchiant.netlify.com/screenhover--red.b4bf448d.png">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- COMMENT START-->
+                <div class="post__conntent__commentBox">
+                  {% for comment in article.comments %}
+                    <div class="comment">
+                      <header class="comment__header">
+                        <a href="/profil.html">
+                          <div class="comment__header__image">
+                            <img alt="" src="https://lamodeestchiant.netlify.com/mec.992a6db1.png">
+                          </div>
+                        </a>
+                        <p class="comment__header__author">{{ comment.author}}</p>
+                      </header>
+                      <main class="comment__content">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                      </main>
+                    </div>
+                  {% endfor %}
+
+                  {% if app.user %}
+                    {{ form_start(commentForm) }}
+
+                    {{ form_row(commentForm.author, {'attr': {'placeholder': 'Votre nom'} })}}
+
+                    {{ form_row(commentForm.content,{'attr': {'placeholder': 'Votre commentaire'} })}}
+                    <button class="btn btn-success" type="submit">Commenter</button>
+                    {{ form_end(commentForm) }}
+                    <div class="comment comment--form">
+                      <header class="comment__header">
+                        <a href="/profil.html">
+                          <div class="comment__header__image">
+                            <img alt="" src="https://lamodeestchiant.netlify.com/mec.992a6db1.png">
+                          </div>
+                        </a>
+                        <p class="comment__header__author">Ecrit un</p>
+                      </header>
+                      <main class="comment__content">
+                        <form action="" class="form form--comment" method="get">
+                          <div class="form__field">
+                            <textarea id="name" name="comment" required="" type="text"></textarea>
+                          </div>
+                          <div class="form__button">
+                            <input type="submit" value="Ok">
+                          </div>
+                        </form>
+                      </main>
+                    </div>
+
+                  {% else %}
+                    <h2>Vous ne pouvez pas commenter sans etre identifié</h2>
+                    <a class="btn btn-primary" href="/connexion">Connexion</a>
+                  {% endif %}
+                </div>
+                <!-- COMMENT END -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </main>
+    </section>
+  </div>
 {% endblock %}
