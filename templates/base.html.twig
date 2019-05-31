@@ -954,6 +954,17 @@
         <a href="/"><h1>La monde est chiant, parce que ....</h1></a>
         <a href="/blog/new"><button class="button button--newPost"></button></a>
     </div>
+    <ul>
+        {% if not app.user %}
+        <li class="item">
+            <a href="{{ path(security_login) }}" class="nav">Connexion</a>
+        </li>
+        {% else %}
+        <li class="item">
+            <a href="{{ path(security_logout) }}" class="nav">Deconnexion</a>
+        </li>
+        {% endif %}
+    </ul>
 </header>
 <button class="button--circle button--nav"></button>
 <img src="https://lamodeestchiant.netlify.com/mec.992a6db1.png" alt="" class="mec hidden-xs">

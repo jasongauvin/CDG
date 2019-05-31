@@ -80,6 +80,8 @@
 
                             <!-- COMMENT START-->
                             <div class="post__conntent__commentBox">
+                                <h1>{{ article.comments | length }} Commentaires : </h1>
+
                                 {% for comment in article.comments %}
                                 <div class="comment">
                                     <header class="comment__header">
@@ -95,6 +97,21 @@
                                     </main>
                                 </div>
                                 {% endfor %}
+
+                                {% if app.user %}
+                                    {{ form_start(commentForm) }}
+
+                                    {{ form_row(commentForm.author, {'attr': {'placeholder': 'Votre nom'} }})}}
+
+                                    {{ form_row(commentForm.content,{'attr': {'placeholder': 'Votre commentaire'}})}}
+                                    <button type="submit" class="btn btn-success">Commenter</button>
+                                    {{ form_end(commentForm) }}
+
+                                {% else %}
+                                    <h2>Vous ne pouvez pas commenter sans etre identifié</h2>
+                                    <a href="{{ security_login }}" class="btn btn-primary">Connexion</a>
+                                {% endif %}
+
                                 <div class="comment comment--form">
                                     <header class="comment__header">
                                         <a href="/profil.html">

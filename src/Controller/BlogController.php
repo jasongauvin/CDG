@@ -3,19 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Form\ArticleType;
+use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 class BlogController extends AbstractController
 {
     /**
      * @Route("/blog/new ", name="blog_create")
-     *  * @Route("/blog/{id}/edit ", name="blog_edit")
+     * @Route("/blog/{id}/edit ", name="blog_edit")
+     * @ParamConverter("post", class="SensioBlogBundle:Post")
      */
     public function create(Article $article = null ,Request $request, ObjectManager $manager) {
 
@@ -65,10 +70,28 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
-    public function show( Article $article) {
+    public function show( Article $article, Request $request, ObjectManager $manager) {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()){
+
+            $comment->setCreaterAt(new \DateTime())
+                    ->setArticle($article);
+            $manager->persist($comment);
+            $manager->flush();
+
+            return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
+        }
+
         return $this->render('blog/show.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'commentForm' => $form->createView()
         ]);
     }
+
+
 
 }
