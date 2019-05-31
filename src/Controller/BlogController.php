@@ -20,8 +20,8 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/new ", name="blog_create")
      * @Route("/blog/{id}/edit ", name="blog_edit")
-     * @ParamConverter("post", class="SensioBlogBundle:Post")
      */
+    //*@ParamConverter("post", class="SensioBlogBundle:Post")
     public function create(Article $article = null ,Request $request, ObjectManager $manager) {
 
         if (!$article) {

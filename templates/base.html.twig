@@ -1,980 +1,1086 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}
-        <link href="https://fonts.googleapis.com/css?family=Pirata+One&display=swap" rel="stylesheet">
-        <style>
-            html, body, div, span, applet, object, iframe,
-            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-            a, abbr, acronym, address, big, cite, code,
-            del, dfn, em, img, ins, kbd, q, s, samp,
-            small, strike, strong, sub, sup, tt, var,
-            b, u, i, center,
-            dl, dt, dd, ol, ul, li,
-            fieldset, form, label, legend,
-            table, caption, tbody, tfoot, thead, tr, th, td,
-            article, aside, canvas, details, embed,
-            figure, figcaption, footer, header, hgroup,
-            menu, nav, output, ruby, section, summary,
-            time, mark, audio, video {
-                margin: 0;
-                padding: 0;
-                border: 0;
-                font-size: 100%;
-                font: inherit;
-                vertical-align: baseline;
-            }
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+      {% block title %}
+        Le monde est chiant, parce que ...
+      {% endblock %}
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Pirata+One&display=swap" rel="stylesheet">
+    <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
 
-            /* HTML5 display-role reset for older browsers */
-            article, aside, details, figcaption, figure,
-            footer, header, hgroup, menu, nav, section {
-                display: block;
-            }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
 
-            body {
-                line-height: 1;
-            }
+      body {
+        line-height: 1;
+      }
 
-            ol, ul {
-                list-style: none;
-            }
+      ol,
+      ul {
+        list-style: none;
+      }
 
-            blockquote, q {
-                quotes: none;
-            }
+      blockquote,
+      q {
+        quotes: none;
+      }
 
-            blockquote:before, blockquote:after,
-            q:before, q:after {
-                content: "";
-                content: none;
-            }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
 
-            table {
-                border-collapse: collapse;
-                border-spacing: 0;
-            }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
 
-            a {
-                text-decoration: none;
-                color: black;
-            }
+      a {
+        text-decoration: none;
+        color: black;
+      }
 
-            * {
-                box-sizing: border-box;
-            }
+      * {
+        box-sizing: border-box;
+      }
 
-            img {
-                display: block;
-                width: 100%;
-            }
+      img {
+        display: block;
+        width: 100%;
+      }
 
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: sans-serif;
-                background-color: white;
-                overflow-x: hidden;
-                font-family: "Gilory", sans-serif;
-            }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: white;
+        overflow-x: hidden;
+        font-family: "Gilory", sans-serif;
+      }
 
-            .wrapper {
-                margin-top: calc(2vw + 40px);
-            }
-            @media (max-width: 749px) {
-                .wrapper {
-                    padding-right: 20px;
-                    padding-left: 20px;
-                }
-            }
-            @media (min-width: 750px) {
-                .wrapper {
-                    display: flex;
-                }
-                .wrapper .sidebar {
-                    width: calc(2vw + 200px);
-                }
-                .wrapper .main {
-                    width: calc(100vw - (2vw + 200px));
-                    padding-right: 3vw;
-                    display: flex;
-                    justify-content: center;
-                }
-            }
-            @media (min-width: 1024px) {
-                .wrapper .sidebar {
-                    width: calc(3vw + 320px);
-                }
-                .wrapper .main {
-                    width: calc(100vw - (3vw + 320px));
-                    padding-right: 3vw;
-                }
-            }
+      .wrapper {
+        margin-top: calc(2vw + 40px);
+      }
+      @media(max-width: 749px) {
+        .wrapper {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+      }
+      @media(min-width: 750px) {
+        .wrapper {
+          display: flex;
+        }
+        .wrapper .sidebar {
+          width: calc(2vw + 200px);
+        }
+        .wrapper .main {
+          width: calc(100vw -(2vw + 200px));
+          padding-right: 3vw;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      @media(min-width: 1024px) {
+        .wrapper .sidebar {
+          width: calc(3vw + 320px);
+        }
+        .wrapper .main {
+          width: calc(100vw -(3vw + 320px));
+          padding-right: 3vw;
+        }
+      }
 
-            p, a, s {
-                font-weight: bold;
-                font-size: 18px;
-                line-height: 1.2em;
-            }
+      p,
+      a,
+      s {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 1.2em;
+      }
 
-            .hidden-xs {
-                display: block;
-            }
-            @media (max-width: 749px) {
-                .hidden-xs {
-                    display: none;
-                }
-            }
+      .hidden-xs {
+        display: block;
+      }
+      @media(max-width: 749px) {
+        .hidden-xs {
+          display: none;
+        }
+      }
 
-            .visible-xs {
-                display: none;
-            }
-            @media (max-width: 749px) {
-                .visible-xs {
-                    display: block;
-                }
-            }
+      .visible-xs {
+        display: none;
+      }
+      @media(max-width: 749px) {
+        .visible-xs {
+          display: block;
+        }
+      }
+      select {
+        border: solid 5px black;
+      }
+      button {
+        background-color: #fff;
+      }
 
-            button {
-                background-color: #fff;
-            }
+      input:focus,
+      textarea:focus,
+      button:focus {
+        outline: none;
+      }
 
-            input:focus, textarea:focus, button:focus {
-                outline: none;
-            }
+      @media(min-width: 750px) {
+        .mec {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100px;
+          transform: scaleX(-1);
+        }
+      }
+      @media(min-width: 1024px) {
+        .mec {
+          right: 0;
+          left: auto;
+          transform: scaleX(1);
+        }
+      }
 
-            @media (min-width: 750px) {
-                .mec {
-                    position: fixed;
-                    left: 0;
-                    bottom: 0;
-                    width: 100px;
-                    transform: scaleX(-1);
-                }
-            }
-            @media (min-width: 1024px) {
-                .mec {
-                    right: 0;
-                    left: auto;
-                    transform: scaleX(1);
-                }
-            }
+      span {
+        color: red;
+      }
 
-            span {
-                color: red;
-            }
+      .textLink {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-top: 20px;
+        font-size: 0.9em;
+        width: 100%;
+        display: block;
+        text-align: right;
+      }
+      @media(min-width: 750px) {
+        .textLink {
+          margin-top: -10px;
+        }
+      }
 
-            .textLink {
-                font-weight: bold;
-                text-decoration: underline;
-                margin-top: 20px;
-                font-size: 0.9em;
-                width: 100%;
-                display: block;
-                text-align: right;
-            }
-            @media (min-width: 750px) {
-                .textLink {
-                    margin-top: -10px;
-                }
-            }
+      .login .wrapper {
+        background-image: url('https://lamodeestchiant.netlify.com/pattern.44424c51.png');
+        height: calc(100vh -(2vw + 40px));
+        background-color: lightgrey;
+      }
 
-            .login .wrapper {
-                background-image: url(https://lamodeestchiant.netlify.com/pattern.44424c51.png);
-                height: calc(100vh - (2vw + 40px));
-                background-color: lightgrey;
-            }
+      .header {
+        width: 100vw;
+        padding: 1vw 3vw;
+        position: fixed;
+        z-index: 10;
+        border-bottom: solid 5px black;
+        background-color: #fff;
+        align-items: center;
+        transition: all 0.5s;
+        height: 70px;
+      }
+      @media(max-width: 749px) {
+        .header {
+          padding: 10px 20px;
+          height: 100px;
+        }
+      }
+      .header h1 {
+        font-family: "Pirata One", cursive;
+        font-size: 2.5em;
+      }
+      @media(max-width: 749px) {
+        .header h1 {
+          font-size: 1.8em;
+          line-height: 1em;
+          margin-right: 5px;
+        }
+      }
+      .header button {
+        transition: all 0.3s;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url('https://lamodeestchiant.netlify.com/cross.3fdfd3a6.png');
+        background-size: 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: rotate(45deg);
+      }
+      .header.header__newpost--open {
+        height: 80vh;
+        transition: all 0.5s;
+      }
 
-            .header {
-                width: 100vw;
-                padding: 1vw 3vw;
-                position: fixed;
-                z-index: 10;
-                border-bottom: solid 5px black;
-                background-color: #fff;
-                align-items: center;
-                transition: all 0.5s;
-                height: 70px;
-            }
-            @media (max-width: 749px) {
-                .header {
-                    padding: 10px 20px;
-                    height: 100px;
-                }
-            }
-            .header h1 {
-                font-family: "Pirata One", cursive;
-                font-size: 2.5em;
-            }
-            @media (max-width: 749px) {
-                .header h1 {
-                    font-size: 1.8em;
-                    line-height: 1em;
-                    margin-right: 5px;
-                }
-            }
-            .header button {
-                transition: all 0.3s;
-                cursor: pointer;
-                width: 30px;
-                height: 30px;
-                background-image: url(https://lamodeestchiant.netlify.com/cross.3fdfd3a6.png);
-                background-size: 60%;
-                background-position: center;
-                background-repeat: no-repeat;
-                transform: rotate(45deg);
-            }
-            .header.header__newpost--open {
-                height: 80vh;
-                transition: all 0.5s;
-            }
+      .header__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-            .header__main {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+      .button {
+        border: solid 5px black;
+        border-radius: 20vw;
+        font-weight: bold;
+        font-size: 1em;
+      }
 
-            .button {
-                border: solid 5px black;
-                border-radius: 20vw;
-                font-weight: bold;
-                font-size: 1em;
-            }
+      .post {
+        max-width: 720px;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      @media(min-width: 750px) {
+        .post {
+          margin-bottom: 50px;
+        }
+      }
 
-            .post {
-                max-width: 720px;
-                position: relative;
-                margin-bottom: 20px;
-            }
-            @media (min-width: 750px) {
-                .post {
-                    margin-bottom: 50px;
-                }
-            }
+      .accueil .post:first-child {
+        margin-top: 80px;
+      }
+      @media(max-width: 749px) {
+        .accueil .post:first-child {
+          margin-top: 120px;
+        }
+      }
 
-            .accueil .post:first-child {
-                margin-top: 80px;
-            }
-            @media (max-width: 749px) {
-                .accueil .post:first-child {
-                    margin-top: 120px;
-                }
-            }
+      .vote__number {
+        font-family: "Pirata One", cursive;
+        font-size: 3em;
+        line-height: 1em;
+        margin-right: 10px;
+      }
+      @media(min-width: 750px) {
+        .vote__number {
+          font-size: 5em;
+        }
+      }
 
-            .vote__number {
-                font-family: "Pirata One", cursive;
-                font-size: 3em;
-                line-height: 1em;
-                margin-right: 10px;
-            }
-            @media (min-width: 750px) {
-                .vote__number {
-                    font-size: 5em;
-                }
-            }
+      .post__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      @media(min-width: 750px) {
+        .post__header {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+      .post__header .post__header__info {
+        display: flex;
+        align-items: center;
+      }
+      @media(min-width: 750px) {
+        .post__header .post__header__info {
+          width: 50%;
+        }
+      }
+      .post__header .post__header__info .post__header__image {
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+        border: solid 5px black;
+        border-radius: 50%;
+        background-color: lightgrey;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .post__header .post__header__info .post__header__image img {
+        height: 100%;
+      }
+      .post__header .post__header__info .post__header__author {
+        position: relative;
+        font-weight: bold;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .post__header .post__header__edit {
+        display: flex;
+      }
+      @media(max-width: 749px) {
+        .post__header .post__header__edit {
+          justify-content: flex-end;
+        }
+      }
+      .post__header .post__header__edit p {
+        margin-left: 5px;
+        color: grey;
+        cursor: pointer;
+      }
+      .post__header .post__header__edit p:hover {
+        color: #000;
+      }
 
-            .post__header {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            @media (min-width: 750px) {
-                .post__header {
-                    flex-direction: row;
-                    justify-content: space-between;
-                }
-            }
-            .post__header .post__header__info {
-                display: flex;
-                align-items: center;
-            }
-            @media (min-width: 750px) {
-                .post__header .post__header__info {
-                    width: 50%;
-                }
-            }
-            .post__header .post__header__info .post__header__image {
-                overflow: hidden;
-                width: 50px;
-                height: 50px;
-                border: solid 5px black;
-                border-radius: 50%;
-                background-color: lightgrey;
-                margin-right: 10px;
-                cursor: pointer;
-            }
-            .post__header .post__header__info .post__header__image img {
-                height: 100%;
-            }
-            .post__header .post__header__info .post__header__author {
-                position: relative;
-                font-weight: bold;
-                cursor: pointer;
-                margin-right: 5px;
-            }
-            .post__header .post__header__edit {
-                display: flex;
-            }
-            @media (max-width: 749px) {
-                .post__header .post__header__edit {
-                    justify-content: flex-end;
-                }
-            }
-            .post__header .post__header__edit p {
-                margin-left: 5px;
-                color: grey;
-                cursor: pointer;
-            }
-            .post__header .post__header__edit p:hover {
-                color: #000;
-            }
+      @media(min-width: 750px) {
+        .post__wrapper {
+          display: flex;
+        }
+      }
+      @media(min-width: 750px) {
+        .post__wrapper .post__vote {
+          width: 120px;
+        }
+      }
+      .post__wrapper .post__content {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 5px black;
+        padding-bottom: 20px;
+      }
+      @media(min-width: 750px) {
+        .post__wrapper .post__content {
+          width: calc(100% - 120px);
+        }
+      }
+      .post__wrapper .post__content .post__content__image {
+        width: 80%;
+        margin-top: 30px;
+        align-self: center;
+        position: relative;
+      }
+      @media(min-width: 750px) {
+        .post__wrapper .post__content .post__content__image {
+          max-width: 400px;
+        }
+      }
+      .post__wrapper .post__content .post__content__image:after,
+      .post__wrapper .post__content .post__content__image:before {
+        border: solid 5px black;
+        background-color: #fff;
+        width: 80px;
+        display: block;
+        height: 10px;
+        content: "";
+        position: absolute;
+        transform-origin: bottom;
+      }
+      .post__wrapper .post__content .post__content__image:after {
+        right: -20px;
+        top: 5px;
+        transform: rotate(45deg);
+      }
+      .post__wrapper .post__content .post__content__image:before {
+        left: -30px;
+        bottom: 15px;
+        transform: rotate(45deg);
+      }
 
-            @media (min-width: 750px) {
-                .post__wrapper {
-                    display: flex;
-                }
-            }
-            @media (min-width: 750px) {
-                .post__wrapper .post__vote {
-                    width: 120px;
-                }
-            }
-            .post__wrapper .post__content {
-                display: flex;
-                flex-direction: column;
-                border-bottom: solid 5px black;
-                padding-bottom: 20px;
-            }
-            @media (min-width: 750px) {
-                .post__wrapper .post__content {
-                    width: calc(100% - 120px);
-                }
-            }
-            .post__wrapper .post__content .post__content__image {
-                width: 80%;
-                margin-top: 30px;
-                align-self: center;
-                position: relative;
-            }
-            @media (min-width: 750px) {
-                .post__wrapper .post__content .post__content__image {
-                    max-width: 400px;
-                }
-            }
-            .post__wrapper .post__content .post__content__image:after, .post__wrapper .post__content .post__content__image:before {
-                border: solid 5px black;
-                background-color: #fff;
-                width: 80px;
-                display: block;
-                height: 10px;
-                content: "";
-                position: absolute;
-                transform-origin: bottom;
-            }
-            .post__wrapper .post__content .post__content__image:after {
-                right: -20px;
-                top: 5px;
-                transform: rotate(45deg);
-            }
-            .post__wrapper .post__content .post__content__image:before {
-                left: -30px;
-                bottom: 15px;
-                transform: rotate(45deg);
-            }
+      .vote {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+      .vote .vote__number {
+        font-family: "Pirata One", cursive;
+        font-size: 5em;
+      }
+      .vote .vote__navigation {
+        flex-direction: column;
+        margin-right: 10px;
+      }
+      @media(max-width: 749px) {
+        .vote .vote__navigation {
+          display: none;
+        }
+      }
+      .vote .vote__navigation .vote__navigation__arrow {
+        display: block;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-image: url('https://lamodeestchiant.netlify.com/arrow.7709f7d7.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: calc(25px * 1.3);
+        width: calc(30px * 1.3);
+      }
+      .vote .vote__navigation .vote__navigation__arrow--up {
+        margin-bottom: 10px;
+      }
+      .vote .vote__navigation .vote__navigation__arrow--down {
+        transform: rotate(180deg);
+        display: none;
+      }
 
-            .vote {
-                display: flex;
-                justify-content: space-around;
-                align-items: flex-start;
-            }
-            .vote .vote__number {
-                font-family: "Pirata One", cursive;
-                font-size: 5em;
-            }
-            .vote .vote__navigation {
-                display: none;
-                flex-direction: column;
-                margin-right: 10px;
-            }
-            @media (max-width: 749px) {
-                .vote .vote__navigation {
-                    display: none;
-                }
-            }
-            .vote .vote__navigation .vote__navigation__arrow {
-                display: block;
-                cursor: pointer;
-                outline: none;
-                border: none;
-                background-image: url(https://lamodeestchiant.netlify.com/arrow.7709f7d7.png);
-                background-size: 100%;
-                background-repeat: no-repeat;
-                height: calc(25px * 1.3);
-                width: calc(30px * 1.3);
-            }
-            .vote .vote__navigation .vote__navigation__arrow--up {
-                margin-bottom: 10px;
-            }
-            .vote .vote__navigation .vote__navigation__arrow--down {
-                transform: rotate(180deg);
-                display: none;
-            }
+      .post__button--comment {
+        display: flex;
+        margin: 20px 10px 10px;
+      }
+      .post__button--comment .post__button--commentButton {
+        display: block;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-image: url('https://lamodeestchiant.netlify.com/comment.897c0fff.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: calc(25px * 1.3);
+        width: calc(30px * 1.3);
+        margin-right: 10px;
+      }
+      .post__button--vote {
+        display: flex;
+        background-color: #fff;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: -10px;
+        padding-left: 20px;
+        right: 0;
+      }
+      .post__button--vote .post__button--vote__box {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        margin-top: 0;
+      }
+      .post__button--vote .post__button--vote__box .post__button--commentCount--down {
+        display: none;
+      }
+      .post__button--vote .post__button--vote__box .post__button--vote__arrow {
+        cursor: pointer;
+        display: block;
+        outline: none;
+        border: none;
+        background-image: url('https://lamodeestchiant.netlify.com/arrow.7709f7d7.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: calc(25px * 1);
+        width: calc(30px * 1);
+        margin-right: 5px;
+      }
+      .post__button--vote .post__button--vote__box .post__button--vote__arrow--down {
+        display: none;
+      }
+      @media(min-width: 750px) {
+        .post__button--vote .post__button--vote__box .post__button--vote__arrow--down {
+          display: block;
+          background-image: url('https://lamodeestchiant.netlify.com/full.7514a86c.png');
+          background-size: 80%;
+          background-position: center;
+        }
+      }
 
-            .post__button--comment {
-                display: flex;
-                margin: 10px;
-                margin-top: 20px;
-            }
-            .post__button--comment .post__button--commentButton {
-                display: block;
-                cursor: pointer;
-                outline: none;
-                border: none;
-                background-image: url(https://lamodeestchiant.netlify.com/comment.897c0fff.png);
-                background-size: 100%;
-                background-repeat: no-repeat;
-                height: calc(25px * 1.3);
-                width: calc(30px * 1.3);
-                margin-right: 10px;
-            }
-            .post__button--vote {
-                display: flex;
-                background-color: #fff;
-                justify-content: flex-end;
-                position: absolute;
-                bottom: -10px;
-                padding-left: 20px;
-                right: 0;
-            }
-            .post__button--vote .post__button--vote__box {
-                display: flex;
-                align-items: center;
-                margin-left: 10px;
-                margin-top: 0px;
-            }
-            .post__button--vote .post__button--vote__box .post__button--commentCount--down {
-                display: none;
-            }
-            .post__button--vote .post__button--vote__box .post__button--vote__arrow {
-                cursor: pointer;
-                display: block;
-                outline: none;
-                border: none;
-                background-image: url(https://lamodeestchiant.netlify.com/arrow.7709f7d7.png);
-                background-size: 100%;
-                background-repeat: no-repeat;
-                height: calc(25px * 1);
-                width: calc(30px * 1);
-                margin-right: 5px;
-            }
-            .post__button--vote .post__button--vote__box .post__button--vote__arrow--down {
-                display: none;
-            }
-            @media (min-width: 750px) {
-                .post__button--vote .post__button--vote__box .post__button--vote__arrow--down {
-                    display: block;
-                    background-image: url(https://lamodeestchiant.netlify.com/full.7514a86c.png);
-                    background-size: 80%;
-                    background-position: center;
-                }
-            }
+      .comment {
+        margin-bottom: 20px;
+      }
+      @media(min-width: 750px) {
+        .comment {
+          width: 87%;
+          margin-left: 13%;
+        }
+      }
+      .comment:last-child {
+        margin-bottom: 40px;
+      }
+      .comment .comment__header {
+        display: flex;
+        align-items: center;
+      }
+      .comment .comment__header .comment__header__image {
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        border: solid 5px black;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .comment .comment__header .comment__header__image img {
+        height: 100%;
+      }
+      .comment .comment__header .comment__header__author {
+        position: relative;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .comment .comment__header .comment__header__author:after {
+        position: absolute;
+        left: calc(100% + 5px);
+        content: "comment :";
+        width: 100px;
+      }
+      .comment .comment__content {
+        width: 90%;
+        margin-left: 10%;
+      }
 
-            .comment {
-                margin-bottom: 20px;
-            }
-            @media (min-width: 750px) {
-                .comment {
-                    width: 87%;
-                    margin-left: 13%;
-                }
-            }
-            .comment:last-child {
-                margin-bottom: 40px;
-            }
-            .comment .comment__header {
-                display: flex;
-                align-items: center;
-            }
-            .comment .comment__header .comment__header__image {
-                overflow: hidden;
-                width: 40px;
-                height: 40px;
-                border: solid 5px black;
-                border-radius: 50%;
-                margin-right: 10px;
-            }
-            .comment .comment__header .comment__header__image img {
-                height: 100%;
-            }
-            .comment .comment__header .comment__header__author {
-                position: relative;
-                font-weight: bold;
-                cursor: pointer;
-            }
-            .comment .comment__header .comment__header__author:after {
-                position: absolute;
-                left: calc(100% + 5px);
-                content: "comment :";
-                width: 100px;
-            }
-            .comment .comment__content {
-                width: 90%;
-                margin-left: 10%;
-            }
+      .form .form__field {
+        width: 100%;
+      }
+      .form .form__field textarea {
+        border: solid 5px black;
+        width: 100%;
+        font-size: 1em;
+        padding: 10px;
+        font-weight: bold;
+      }
+      .form .form__button input {
+        border: solid 5px black;
+        border-radius: 20vw;
+        font-weight: bold;
+        outline: none;
+        font-size: 1em;
+        margin-top: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .form .form__line input {
+        padding: 10px;
+        border: solid 5px black;
+        font-weight: bold;
+        width: 100%;
+        outline: none;
+        font-size: 1em;
+      }
+      .form label {
+        font-weight: bold;
+        margin-top: 0;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
 
-            .form .form__field {
-                width: 100%;
-            }
-            .form .form__field textarea {
-                border: solid 5px black;
-                width: 100%;
-                font-size: 1em;
-                padding: 10px;
-                font-weight: bold;
-            }
-            .form .form__button input {
-                border: solid 5px black;
-                border-radius: 20vw;
-                font-weight: bold;
-                outline: none;
-                font-size: 1em;
-                margin-top: 10px;
-                text-transform: uppercase;
-                text-align: center;
-                cursor: pointer;
-            }
-            .form .form__line input {
-                padding: 10px;
-                border: solid 5px black;
-                font-weight: bold;
-                width: 100%;
-                outline: none;
-                font-size: 1em;
-                text-transform: uppercase;
-            }
-            .form label {
-                font-weight: bold;
-                margin-top: 0px;
-                display: block;
-                margin-top: 20px;
-                margin-bottom: 5px;
-            }
+      .post--new {
+        width: 100%;
+      }
+      .post--new.active {
+        display: block;
+      }
 
-            .post--new {
-                width: 100%;
-            }
-            .post--new.active {
-                display: block;
-            }
+      .post__button--vote__box--screen {
+        position: relative;
+      }
+      .post__button--vote__box--screen:hover .screem--hover {
+        position: absolute;
+        display: block;
+        width: 120px;
+        left: -50px;
+        bottom: -30px;
+        height: 90px;
+        z-index: 0;
+      }
+      .post__button--vote__box--screen .screem--hover {
+        position: absolute;
+        display: none;
+      }
 
-            .post__button--vote__box--screen {
-                position: relative;
-            }
-            .post__button--vote__box--screen:hover .screem--hover {
-                position: absolute;
-                display: block;
-                width: 120px;
-                left: -50px;
-                bottom: -30px;
-                height: 90px;
-                z-index: 0;
-            }
-            .post__button--vote__box--screen .screem--hover {
-                position: absolute;
-                display: none;
-            }
+      .sidebar {
+        padding-top: 20px;
+      }
+      @media(max-width: 749px) {
+        .sidebar.sidebar--post {
+          position: fixed;
+          transition: bottom 0.3s;
+          bottom: -100%;
+          z-index: 9;
+          height: 340px;
+          width: 100vw;
+          background-color: #fff;
+          margin-left: -20px;
+          padding-left: 10px;
+          padding-top: 10%;
+          border-top: solid 5px black;
+        }
+      }
+      .sidebar.active {
+        bottom: 0;
+      }
+      .sidebar .sidebar__filter {
+        width: calc(100% - 20px);
+        background-color: #fff;
+        position: fixed;
+      }
+      @media(min-width: 750px) {
+        .sidebar .sidebar__filter {
+          width: 200px;
+          margin-left: 3vw;
+        }
+      }
+      @media(min-width: 1024px) {
+        .sidebar .sidebar__filter {
+          width: 280px;
+        }
+      }
+      .sidebar .sidebar__filter .searchbar {
+        width: 100%;
+        border: solid 5px black;
+        border-radius: 20vw;
+        padding: 5px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1em;
+        background-image: url('https://lamodeestchiant.netlify.com/luppe.af926aca.png');
+        background-repeat: no-repeat;
+        background-position: right 5px center;
+        margin-bottom: 10px;
+      }
+      .sidebar .sidebar__filter .searchbar:focus {
+        outline: none;
+      }
+      .sidebar .sidebar__filter button {
+        margin-bottom: 5px;
+        padding: 5px 15px;
+        transition: all 0.3s;
+      }
+      .sidebar .sidebar__filter button:hover {
+        background-color: #000;
+        color: #fff;
+      }
+      .sidebar .sidebar__filter button.button--commit {
+        background-color: #000;
+        color: #fff;
+      }
 
-            .sidebar {
-                padding-top: 20px;
-            }
-            @media (max-width: 749px) {
-                .sidebar.sidebar--post {
-                    position: fixed;
-                    transition: bottom 0.3s;
-                    bottom: -100%;
-                    z-index: 9;
-                    height: 340px;
-                    width: 100vw;
-                    background-color: #fff;
-                    margin-left: -20px;
-                    padding-left: 10px;
-                    padding-top: 10%;
-                    border-top: solid 5px black;
-                }
-            }
-            .sidebar.active {
-                bottom: 0px;
-            }
-            .sidebar .sidebar__filter {
-                width: calc(100% - 20px);
-                background-color: #fff;
-                position: fixed;
-            }
-            @media (min-width: 750px) {
-                .sidebar .sidebar__filter {
-                    width: 200px;
-                    margin-left: 3vw;
-                }
-            }
-            @media (min-width: 1024px) {
-                .sidebar .sidebar__filter {
-                    width: 280px;
-                }
-            }
-            .sidebar .sidebar__filter .searchbar {
-                width: 100%;
-                border: solid 5px black;
-                border-radius: 20vw;
-                padding: 5px;
-                font-weight: bold;
-                text-align: center;
-                font-size: 1em;
-                background-image: url(https://lamodeestchiant.netlify.com/luppe.af926aca.png);
-                background-repeat: no-repeat;
-                background-position: right 5px center;
-                margin-bottom: 10px;
-            }
-            .sidebar .sidebar__filter .searchbar:focus {
-                outline: none;
-            }
-            .sidebar .sidebar__filter button {
-                margin-bottom: 5px;
-                padding: 5px 15px;
-                transition: all 0.3s;
-            }
-            .sidebar .sidebar__filter button:hover {
-                background-color: #000;
-                color: #fff;
-            }
-            .sidebar .sidebar__filter button.button--commit {
-                background-color: #000;
-                color: #fff;
-            }
+      .button--circle {
+        position: fixed;
+        bottom: 10px;
+        border: solid 5px black;
+        border-radius: 50%;
+        width: 50%;
+        background-color: #fff;
+        z-index: 10;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .button--circle.button--nav {
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        background-image: url('https://lamodeestchiant.netlify.com/nav.b9302d9b.png');
+        background-size: 50%;
+      }
+      @media(min-width: 750px) {
+        .button--circle.button--nav {
+          display: none;
+        }
+      }
+      .button--circle.button--profil {
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        background-image: url('https://lamodeestchiant.netlify.com/image.8ef144c4.png');
+        background-size: cover;
+        left: 3vw;
+      }
+      @media(max-width: 749px) {
+        .button--circle.button--profil {
+          position: absolute;
+          bottom: 20px;
+        }
+      }
 
-            .button--circle {
-                position: fixed;
-                bottom: 10px;
-                border: solid 5px black;
-                border-radius: 50%;
-                width: 50%;
-                background-color: #fff;
-                z-index: 10;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-            .button--circle.button--nav {
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                background-image: url(https://lamodeestchiant.netlify.com/nav.b9302d9b.png);
-                background-size: 50%;
-            }
-            @media (min-width: 750px) {
-                .button--circle.button--nav {
-                    display: none;
-                }
-            }
-            .button--circle.button--profil {
-                cursor: pointer;
-                width: 60px;
-                height: 60px;
-                background-image: url(https://lamodeestchiant.netlify.com/image.8ef144c4.png);
-                background-size: cover;
-                left: 3vw;
-            }
-            @media (max-width: 749px) {
-                .button--circle.button--profil {
-                    position: absolute;
-                    bottom: 20px;
-                }
-            }
+      .sidebar--profil {
+        display: flex;
+        justify-content: center;
+      }
+      @media(min-width: 750px) {
+        .sidebar--profil {
+          position: fixed;
+        }
+      }
+      .sidebar--profil .profilInfoBox {
+        width: 200px;
+        position: relative;
+      }
+      @media(max-width: 749px) {
+        .sidebar--profil .profilInfoBox {
+          margin-top: 50px;
+        }
+      }
+      .sidebar--profil .profilInfoBox .botton--edit {
+        cursor: pointer;
+        background-image: url('https://lamodeestchiant.netlify.com/stilo.9a4fc04d.png');
+        background-size: 50%;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      @media(min-width: 750px) {
+        .sidebar--profil .profilInfoBox .botton--edit {
+          right: -20px;
+        }
+      }
+      .sidebar--profil .profilInfoBox .profilInfoBox__image {
+        border-radius: 50%;
+        border: solid 5px black;
+        background-color: lightgrey;
+        overflow: hidden;
+        width: 200px;
+        position: relative;
+        height: 200px;
+      }
+      @media(max-width: 749px) {
+        .sidebar--profil .profilInfoBox .profilInfoBox__image {
+          width: 100px;
+          height: 100px;
+          margin: 0 auto;
+        }
+      }
+      .sidebar--profil .profilInfoBox .profilInfoBox__image img {
+        height: 100%;
+      }
+      .sidebar--profil .profilInfoBox .profilInfoBox__headline {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2em;
+        font-family: "Pirata One", cursive;
+      }
+      .sidebar--profil .profilInfoBox .profilInfoBox__text {
+        margin-top: 10px;
+        text-align: center;
+      }
 
-            .sidebar--profil {
-                display: flex;
-                justify-content: center;
-            }
-            @media (min-width: 750px) {
-                .sidebar--profil {
-                    position: fixed;
-                }
-            }
-            .sidebar--profil .profilInfoBox {
-                width: 200px;
-                position: relative;
-            }
-            @media (max-width: 749px) {
-                .sidebar--profil .profilInfoBox {
-                    margin-top: 50px;
-                }
-            }
-            .sidebar--profil .profilInfoBox .botton--edit {
-                cursor: pointer;
-                background-image: url(https://lamodeestchiant.netlify.com/stilo.9a4fc04d.png);
-                background-size: 50%;
-                width: 40px;
-                height: 40px;
-                position: absolute;
-                top: 0px;
-                right: 0px;
-            }
-            @media (min-width: 750px) {
-                .sidebar--profil .profilInfoBox .botton--edit {
-                    right: -20px;
-                }
-            }
-            .sidebar--profil .profilInfoBox .profilInfoBox__image {
-                border-radius: 50%;
-                border: solid 5px black;
-                background-color: lightgrey;
-                overflow: hidden;
-                width: 200px;
-                position: relative;
-                height: 200px;
-            }
-            @media (max-width: 749px) {
-                .sidebar--profil .profilInfoBox .profilInfoBox__image {
-                    width: 100px;
-                    height: 100px;
-                    margin: 0 auto;
-                }
-            }
-            .sidebar--profil .profilInfoBox .profilInfoBox__image img {
-                height: 100%;
-            }
-            .sidebar--profil .profilInfoBox .profilInfoBox__headline {
-                text-align: center;
-                margin-top: 20px;
-                font-size: 2em;
-                font-family: "Pirata One", cursive;
-            }
-            .sidebar--profil .profilInfoBox .profilInfoBox__text {
-                margin-top: 10px;
-                text-align: center;
-            }
+      @media(max-width: 749px) {
+        .sidebar--login {
+          margin-top: 110px;
+          padding-right: 10%;
+          display: none;
+        }
+      }
+      @media(min-width: 750px) {
+        .sidebar--login {
+          margin-left: 3vw;
+        }
+      }
 
-            @media (max-width: 749px) {
-                .sidebar--login {
-                    margin-top: 110px;
-                    padding-right: 10%;
-                    display: none;
-                }
-            }
-            @media (min-width: 750px) {
-                .sidebar--login {
-                    margin-left: 3vw;
-                }
-            }
+      .main--profil {
+        border: solid 5px black;
+        max-width: 800px;
+        margin-right: 3vw;
+        padding-left: 2vw;
+        padding-top: 30px;
+        position: relative;
+        margin-top: 80px;
+        padding-right: 10px;
+        margin-bottom: 30px;
+      }
+      @media(max-width: 749px) {
+        .main--profil {
+          margin-top: 100px;
+        }
+      }
+      @media(min-width: 750px) {
+        .main--profil {
+          margin-left: calc(2vw + 200px);
+        }
+      }
+      @media(min-width: 1024px) {
+        .main--profil {
+          margin-left: calc(3vw + 320px);
+        }
+      }
 
-            .main--profil {
-                border: solid 5px black;
-                max-width: 800px;
-                margin-right: 3vw;
-                padding-left: 2vw;
-                padding-top: 30px;
-                position: relative;
-                margin-top: 80px;
-                padding-right: 10px;
-                margin-bottom: 30px;
-            }
-            @media (max-width: 749px) {
-                .main--profil {
-                    margin-top: 100px;
-                }
-            }
-            @media (min-width: 750px) {
-                .main--profil {
-                    margin-left: calc(2vw + 200px);
-                }
-            }
-            @media (min-width: 1024px) {
-                .main--profil {
-                    margin-left: calc(3vw + 320px);
-                }
-            }
+      .main--profil__nav {
+        position: absolute;
+        top: -20px;
+      }
+      @media(max-width: 749px) {
+        .main--profil__nav {
+          top: -70px;
+        }
+      }
+      .main--profil__nav button {
+        cursor: pointer;
+        padding: 5px 15px;
+        transition: all 0.3s;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      .main--profil__nav button:hover {
+        background-color: #000;
+        color: #fff;
+      }
+      .main--profil__nav button.active {
+        background-color: #000;
+        color: #fff;
+      }
 
-            .main--profil__nav {
-                position: absolute;
-                top: -20px;
-            }
-            @media (max-width: 749px) {
-                .main--profil__nav {
-                    top: -70px;
-                }
-            }
-            .main--profil__nav button {
-                cursor: pointer;
-                padding: 5px 15px;
-                transition: all 0.3s;
-                margin-right: 10px;
-                margin-bottom: 10px;
-            }
-            .main--profil__nav button:hover {
-                background-color: #000;
-                color: #fff;
-            }
-            .main--profil__nav button.active {
-                background-color: #000;
-                color: #fff;
-            }
+      .popup {
+        position: fixed;
+        border: solid 5px black;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        translate: bottom 0.5s;
+      }
+      @media(max-width: 749px) {
+        .popup {
+          position: relative;
+          padding: 30px;
+          width: 100%;
+          margin-top: 120px;
+        }
+      }
+      @media(max-width: 320px) {
+        .popup {
+          padding: 20px 10px;
+        }
+      }
+      @media(min-width: 750px) {
+        .popup {
+          bottom: 70px;
+          translate: right 0.5s;
+          right: 120px;
+        }
+        .popup:after {
+          content: "";
+          width: 0;
+          height: 0;
+          position: absolute;
+          bottom: -30px;
+          right: 10px;
+          border-left: 50px solid transparent;
+          border-top: 30px solid #000;
+        }
+      }
+      @media(min-width: 750px) {
+        .popup .popup__content {
+          width: 400px;
+        }
+      }
+      .popup .popup__content .popup__headline {
+        font-family: "Pirata One", cursive;
+        font-size: 3em;
+        margin-bottom: 5px;
+      }
+      @media(max-width: 320px) {
+        .popup .popup__content .popup__headline {
+          font-size: 2.3em;
+          margin-bottom: 10px;
+        }
+      }
+      .popup .botton--close {
+        cursor: pointer;
+        background-image: url('https://lamodeestchiant.netlify.com/cross.bc548973.png');
+        background-size: 50%;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: -20px;
+        right: -20px;
+      }
 
-            .popup {
-                position: fixed;
-                border: solid 5px black;
-                background-color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 40px;
-                translate: bottom 0.5s;
-            }
-            @media (max-width: 749px) {
-                .popup {
-                    position: relative;
-                    padding: 30px;
-                    width: 100%;
-                    margin-top: 120px;
-                }
-            }
-            @media (max-width: 320px) {
-                .popup {
-                    padding: 20px 10px;
-                }
-            }
-            @media (min-width: 750px) {
-                .popup {
-                    bottom: 70px;
-                    translate: right 0.5s;
-                    right: 120px;
-                }
-                .popup:after {
-                    content: "";
-                    width: 0;
-                    height: 0;
-                    position: absolute;
-                    bottom: -30px;
-                    right: 10px;
-                    border-left: 50px solid transparent;
-                    border-top: 30px solid #000;
-                }
-            }
-            @media (min-width: 750px) {
-                .popup .popup__content {
-                    width: 400px;
-                }
-            }
-            .popup .popup__content .popup__headline {
-                font-family: "Pirata One", cursive;
-                font-size: 3em;
-                margin-bottom: 5px;
-            }
-            @media (max-width: 320px) {
-                .popup .popup__content .popup__headline {
-                    font-size: 2.3em;
-                    margin-bottom: 10px;
-                }
-            }
-            .popup .botton--close {
-                cursor: pointer;
-                background-image: url(https://lamodeestchiant.netlify.com/cross.bc548973.png);
-                background-size: 50%;
-                width: 40px;
-                height: 40px;
-                position: absolute;
-                top: -20px;
-                right: -20px;
-            }
+      .login h1 {
+        margin-top: 6px;
+      }
+      @media(max-width: 749px) {
+        .login h1 {
+          max-width: 260px;
+        }
+      }
+      @media(min-width: 750px) {
+        .login h1 {
+          margin-top: 12px;
+        }
+      }
 
-            .login h1 {
-                margin-top: 6px;
-            }
-            @media (max-width: 749px) {
-                .login h1 {
-                    max-width: 260px;
-                }
-            }
-            @media (min-width: 750px) {
-                .login h1 {
-                    margin-top: 12px;
-                }
-            }
+      @media(min-width: 750px) {
+        .popup--info {
+          translate: right 0.5s;
+          right: 120px;
+        }
+      }
 
-            @media (min-width: 750px) {
-                .popup--info {
-                    translate: right 0.5s;
-                    right: 120px;
-                }
-            }
+      .post--screem {
+        background-image: url('https://lamodeestchiant.netlify.com/pattern.44424c51.png');
+        background-color: lightgrey;
+        min-height: 100vh;
+      }
+      .post--screem .popup {
+        background-color: #fff;
+      }
+      .post--screem .popup .popup__content {
+        width: 100%;
+        max-width: 700px;
+      }
+      .post--screem .popup .popup__content .post__content__text {
+        font-size: 1.3em;
+      }
 
-            .post--screem {
-                background-image: url(https://lamodeestchiant.netlify.com/pattern.44424c51.png);
-                background-color: lightgrey;
-                min-height: 100vh;
-            }
-            .post--screem .popup {
-                background-color: #fff;
-            }
-            .post--screem .popup .popup__content {
-                width: 100%;
-                max-width: 700px;
-            }
-            .post--screem .popup .popup__content .post__content__text {
-                font-size: 1.3em;
-            }
+      .cree--post {
+        background-image: url('https://lamodeestchiant.netlify.com/pattern.44424c51.png');
+        background-color: lightgrey;
+        min-height: 100vh;
+      }
+      .cree--post .popup {
+        background-color: #fff;
+        width: 100%;
+        max-width: 700px;
+      }
+      @media(min-width: 750px) {
+        .cree--post .popup .popup__content {
+          width: 100%;
+          max-width: 700px;
+        }
+      }
+      .cree--post .popup .popup__content .post__content__text {
+        font-size: 1.3em;
+      }
+      .main {
+        width: 100%;
+        margin-top: 50px;
+      }
+      textarea {
+        min-height: 100px;
+      }
+      .sidebar--bottom {
+        position: fixed;
+        bottom: 50px;
+        left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__main">
+        <a href="/blog">
+          <h1>Le monde est chiant, parce que ....</h1>
+        </a>
+        <a href="/blog/new">
+          <button class="button button--newPost"></button>
+        </a>
+      </div>
+    </header>
+    <button class="button--circle button--nav"></button>
+    <img alt="" class="mec hidden-xs" src="https://lamodeestchiant.netlify.com/mec.992a6db1.png"> {% block body %}{% endblock %}
 
-            .cree--post {
-                background-image: url(https://lamodeestchiant.netlify.com/pattern.44424c51.png);
-                background-color: lightgrey;
-                min-height: 100vh;
-            }
-            .cree--post .popup {
-                background-color: #fff;
-                width: 100%;
-                max-width: 700px;
-            }
-            @media (min-width: 750px) {
-                .cree--post .popup .popup__content {
-                    width: 100%;
-                    max-width: 700px;
-                }
-            }
-            .cree--post .popup .popup__content .post__content__text {
-                font-size: 1.3em;
-            }
-
-
-        </style>
-    {% endblock %}
-</head>
-<body class="accueil forum">
-<header class="header">
-    <div class="header__main">
-        <a href="/"><h1>La monde est chiant, parce que ....</h1></a>
-        <a href="/blog/new"><button class="button button--newPost"></button></a>
-    </div>
     <ul>
-        {% if not app.user %}
+      {% if not app.user %}
         <li class="item">
-            <a href="{{ path(security_login) }}" class="nav">Connexion</a>
+          <a class="nav" href="/connexion">Connexion</a>
         </li>
-        {% else %}
+      {% else %}
         <li class="item">
-            <a href="{{ path(security_logout) }}" class="nav">Deconnexion</a>
+          <a class="nav" href="/deconnection">Deconnexion</a>
         </li>
-        {% endif %}
+      {% endif %}
     </ul>
-</header>
-<button class="button--circle button--nav"></button>
-<img src="https://lamodeestchiant.netlify.com/mec.992a6db1.png" alt="" class="mec hidden-xs">
-<script src="/script.d573be0b.js"></script>
-</body>
 
-<div class="container">
-    {% block body %}{% endblock %}
-</div>
-
-{% block javascripts %}{% endblock %}
-</body>
+    <script>
+      document.querySelector(".button--nav").addEventListener("click", function () {
+        document.querySelector(".sidebar").classList.toggle("active");
+      });
+      let allVoteCount = document.querySelectorAll("#voteCount")
+      for (let i = 0; i < allVoteCount.length; i++) {
+        let voteCount = allVoteCount[i];
+        let random = Math.floor(Math.random() * 40);
+        voteCount.innerText = random;
+      }
+    </script>
+  </body>
 </html>

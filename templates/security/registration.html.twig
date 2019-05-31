@@ -1,17 +1,42 @@
 {%  extends 'base.html.twig' %}
-
 {% block body %}
+  <div class="login">
+    <div class="wrapper" style="min-height:100vh">
+      <section class="sidebar sidebar--login"></section>
+      <section class="main">
+        <main></main>
+      </section>
 
-    <h1>Inscription sur le site</h1>
+      <div class="popup">
+        <div class="popup__content popup__content--login">
+          <h2 class="popup__headline">Créé un compte !!!!!</h2>
+          <p class="popup__text">
+            Créé un compte pour profiter des toutes les fonctionalités du site.
+            <span class="popup__text popup__text--error"></span>
+          </p>
+          <div class="form form--login">
+            {{ form_start(form) }}
+            <div class="form__line">
+              {{ form_row(form.username, {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur...','type': 'text'}}) }}
+              <div class="form__line">
+                {{ form_row(form.email, {'label': 'Adresse email', 'attr': {'placeholder': 'Adresse email...'}}) }}
+              </div>
+              <div class="form__line">
+                {{ form_row(form.password, {'label': 'Mot de passe', 'attr': {'placeholder': 'Mot de passe...'}}) }}
+              </div>
 
-    {{ form_start(form) }}
-    {{ form_row(form.username, {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur...'}}) }}
-    {{ form_row(form.email, {'label': 'Adresse email', 'attr': {'placeholder': 'Adresse email...'}}) }}
-    {{ form_row(form.password, {'label': 'Mot de passe', 'attr': {'placeholder': 'Mot de passe...'}}) }}
-    {{ form_row(form.confirm_password, {'label': 'Confirmation du mot de passe', 'attr': {'placeholder': 'Repeter mot de passe...'}}) }}
-
-    <button type="submit" class="btn-done">Inscritption</button>
-
-    {{ form_end(form) }}
-
+              <div class="form__line">
+                {{ form_row(form.confirm_password, {'label': 'Confirmation du mot de passe', 'attr': {'placeholder': 'Repeter mot de passe...'}}) }}
+              </div>
+              <div class="form__button">
+                <input class="btn-done" type="submit" value="Inscription">
+              </div>
+              {{ form_end(form) }}
+            </div>
+            <a href="/login">Déjà un compte ?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
