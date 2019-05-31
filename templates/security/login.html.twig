@@ -13,30 +13,29 @@
 
       <div class="popup">
         <div class="popup__content popup__content--login">
-          <h2 class="popup__headline">Connectes toi !!!!!</h2>
+          <h2 class="popup__headline">Connecte toi !!!!!</h2>
           <p class="popup__text">
-            Conectez toi pour profiter des tout le functionalite du site.
+            Connecte toi pour profiter de toutes les fonctionalités du site.
             <span class="popup__text popup__text--error"></span>
           </p>
           <form action="{{ path('security_login') }}" autocomplete="off" class="form form--login" method="post">
             <div class="form__line">
-              <label for="username">Enter ton Username :
+              <label for="username">Entre ton pseudo :
               </label>
               <input id="username" name="username" required type="text">
             </div>
             <div class="form__line">
-              <label for="password">Enter ton mot des password :
+              <label for="password">Entre ton mot de passe :
               </label>
               <input id="password" name="password" required type="password">
             </div>
             <div class="form__button">
-              <input type="submit" value="Send">
+              <input type="submit" value="Se connecter">
             </div>
           </form>
-          <a class="textLink" href="/inscription">Pas encore un compte?</a>
+          <a class="textLink" href="/inscription">Pas encore de compte?</a>
         </div>
       </div>
     </div>
-
   </div>
 {% endblock %}
