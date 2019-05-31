@@ -18,11 +18,16 @@
             Connecte toi pour profiter de toutes les fonctionalités du site.
             <span class="popup__text popup__text--error"></span>
           </p>
-          <form action="/blog" autocomplete="off" class="form form--login" method="post">
+          <form action="{{ path('security_login') }}" autocomplete="off" class="form form--login" method="post">
             <div class="form__line">
               <label for="username">Entre ton pseudo :
               </label>
               <input id="username" name="username" required type="text">
+            </div>
+            <div class="form__line">
+              <label for="username">Entre ton adresse email :
+              </label>
+              <input id="email" name="email" required type="email">
             </div>
             <div class="form__line">
               <label for="password">Entre ton mot de passe :
